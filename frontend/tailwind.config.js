@@ -18,6 +18,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        "cream":"#fefaf0",
+        "orange":"#E68369",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -52,6 +54,12 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        primary: ['Lora', 'sans-serif'],
+        secondary: ['Montserrat', 'sans-serif'],
+        heading: ['Playfair Display', 'serif'],
+
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -73,5 +81,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+  require('@tailwindcss/line-clamp'),
+],
 }
