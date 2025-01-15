@@ -20,7 +20,13 @@ cloudinary.config({
 
 const app = express();
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://food-ordering-platform.vercel.app/"],
+    methods:["POST", "GET"],
+    credentials: true
+  }
+));
 
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
 
