@@ -54,7 +54,7 @@ const UserProfileForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSave)}
-        className="space-y-4 bg-gray-50 rounded-lg md:p-10"
+        className="space-y-4 bg-cream rounded-lg border-b-green md:p-10"
       >
         <div>
           <h2 className="text-2xl font-bold">{title}</h2>
@@ -69,7 +69,7 @@ const UserProfileForm = ({
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input {...field} disabled className="bg-white" />
+                <Input {...field} disabled className="bg-cream border-green" />
               </FormControl>
             </FormItem>
           )}
@@ -82,7 +82,7 @@ const UserProfileForm = ({
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input {...field} className="bg-cream border-green" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -97,7 +97,7 @@ const UserProfileForm = ({
               <FormItem className="flex-1">
                 <FormLabel>Address Line 1</FormLabel>
                 <FormControl>
-                  <Input {...field} className="bg-white" />
+                  <Input {...field} className="bg-cream border-green" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -110,7 +110,7 @@ const UserProfileForm = ({
               <FormItem className="flex-1">
                 <FormLabel>City</FormLabel>
                 <FormControl>
-                  <Input {...field} className="bg-white" />
+                  <Input {...field} className="bg-cream border-green" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -123,7 +123,7 @@ const UserProfileForm = ({
               <FormItem className="flex-1">
                 <FormLabel>Country</FormLabel>
                 <FormControl>
-                  <Input {...field} className="bg-white" />
+                  <Input {...field} className="bg-cream border-green" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -133,7 +133,7 @@ const UserProfileForm = ({
         {isLoading ? (
           <LoadingButton />
         ) : (
-          <Button type="submit" className="bg-orange-500">
+          <Button type="submit" className="bg-orange text-white  hover:bg-orange hover:scale-105 transition-transform">
             {buttonText}
           </Button>
         )}

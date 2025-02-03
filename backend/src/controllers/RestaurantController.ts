@@ -89,3 +89,91 @@ export default {
   getRestaurant,
   searchRestaurant,
 };
+
+
+
+
+
+
+
+
+// import { Request, Response } from "express";
+// import mongoose from "mongoose";
+// import Restaurant from "../models/restaurant";
+
+// const getRestaurant = async (req: Request, res: Response) => {
+//   try {
+//     const restaurantId = req.params.restaurantId;
+
+//     if (!mongoose.Types.ObjectId.isValid(restaurantId)) {
+//       return res.status(400).json({ message: "Invalid restaurant ID" });
+//     }
+
+//     const restaurant = await Restaurant.findById(restaurantId);
+//     if (!restaurant) {
+//       return res.status(404).json({ message: "Restaurant not found" });
+//     }
+
+//     res.json(restaurant);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Something went wrong" });
+//   }
+// };
+
+// const searchRestaurant = async (req: Request, res: Response) => {
+//   try {
+//     const city = req.params.city.trim().toLowerCase();
+
+//     const searchQuery = (req.query.searchQuery as string) || "";
+//     const selectedCuisines = (req.query.selectedCuisines as string) || "";
+//     const sortOption = (req.query.sortOption as string) || "lastUpdated";
+//     const sortDirection = parseInt(req.query.sortDirection as string) || -1;
+//     const page = parseInt(req.query.page as string) || 1;
+
+//     const pageSize = 10;
+//     const skip = (page - 1) * pageSize;
+
+//     let query: any = { city };
+
+//     if (selectedCuisines) {
+//       const cuisinesArray = selectedCuisines
+//         .split(",")
+//         .map((cuisine) => cuisine.trim().toLowerCase());
+//       query["cuisines"] = { $all: cuisinesArray };
+//     }
+
+//     if (searchQuery) {
+//       query["$text"] = { $search: searchQuery };
+//     }
+
+//     const total = await Restaurant.countDocuments(query);
+//     const totalPages = Math.ceil(total / pageSize);
+
+//     if (page > totalPages) {
+//       return res.status(404).json({
+//         message: "Page not found",
+//         pagination: { total, page, pages: totalPages },
+//       });
+//     }
+
+//     const restaurants = await Restaurant.find(query)
+//       .sort({ [sortOption]: sortDirection })
+//       .skip(skip)
+//       .limit(pageSize)
+//       .lean();
+
+//     res.json({
+//       data: restaurants,
+//       pagination: { total, page, pages: totalPages },
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Something went wrong" });
+//   }
+// };
+
+// export default {
+//   getRestaurant,
+//   searchRestaurant,
+// };

@@ -35,11 +35,11 @@ const CuisineFilter = ({ onChange, selectedCuisines }: Props) => {
         <Dialog.Trigger asChild>
           <Button
             variant="outline"
-            className="flex items-center px-4 py-2 text-sm rounded-full"
-          >
+            className="flex items-center px-4 py-2 text-sm w-full bg-orange text-white border border-transparent hover:bg-cream hover:border-green transition-colors"
+            >
             <Filter className="mr-2" size={18} />
             Filter By Cuisine
-            <div className="ml-2 w-5 h-5 flex items-center justify-center text-xs font-semibold text-white bg-blue-500 rounded-full">
+            <div className="ml-2 w-5 h-5 flex items-center justify-center text-xs font-semibold text-white bg-green rounded-full">
               {selectedCuisines.length}
             </div>
           </Button>
@@ -49,7 +49,7 @@ const CuisineFilter = ({ onChange, selectedCuisines }: Props) => {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50 z-50" />
           <Dialog.Content
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange rounded-lg shadow-lg p-6 z-50 w-[90%] max-w-3xl"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-cream rounded-lg shadow-lg p-6 z-50 w-[90%] max-w-3xl"
           >
             {/* Dialog Header */}
             <div className="flex justify-between items-center mb-4">
@@ -72,8 +72,10 @@ const CuisineFilter = ({ onChange, selectedCuisines }: Props) => {
                   className={cn(
                     "flex items-center px-4 py-2 cursor-pointer rounded-lg border",
                     tempSelectedCuisines.includes(cuisine)
-                      ? "bg-green-100 border-green-600 text-green-600"
-                      : "bg-white border-gray-300 text-gray-800 hover:bg-gray-100"
+                      ? "bg-orange border-orange text-white"
+
+                      : "bg-green text-white border-green hover:bg-green-600"
+
                   )}
                 >
                   {tempSelectedCuisines.includes(cuisine) && (
@@ -86,11 +88,11 @@ const CuisineFilter = ({ onChange, selectedCuisines }: Props) => {
 
             {/* Dialog Footer */}
             <div className="flex justify-end mt-6 space-x-4">
-              <Button variant="outline" onClick={handleCuisinesReset}>
+              <Button variant="outline" onClick={handleCuisinesReset} className="bg-cream border-green text-black hover:bg-green-100 hover:scale-105 transition-transform">
                 Reset Filters
               </Button>
               <Dialog.Close asChild>
-                <Button variant="default" onClick={handleApplyFilters}>
+                <Button variant="default" onClick={handleApplyFilters}  className="bg-orange text-white hover:bg-orange hover:scale-105 transition-transform">
                   Apply Filters
                 </Button>
               </Dialog.Close>

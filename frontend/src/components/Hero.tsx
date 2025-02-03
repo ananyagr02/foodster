@@ -50,7 +50,7 @@ const Hero = () => {
   return (
     <div className="relative overflow-hidden w-full">
       <div className="flex justify-center items-center text-center px-4 mt-7 xl:mt-10">
-      <h1 className="text-3xl  md:text-4xl lg:text-4xl font-heading font-bold italic">
+      <h1 className="text-3xl  md:text-2xl lg:text-3xl font-heading font-bold italic">
       Crave it, click it, enjoy it!<br></br>Delicious food delivered to your doorstep anytime, anywhere
       </h1>
       </div>

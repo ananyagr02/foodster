@@ -12,7 +12,7 @@ const CuisineCheckbox = ({ cuisine, field }: Props) => {
     <FormItem className="flex flex-row items-center space-x-1 space-y-0 mt-2">
       <FormControl>
         <Checkbox
-          className="bg-white"
+          className="bg-cream"
           checked={field.value.includes(cuisine)}
           onCheckedChange={(checked) => {
             if (checked) {

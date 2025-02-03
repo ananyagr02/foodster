@@ -94,3 +94,51 @@
 html {
   scroll-behavior: smooth;
 }
+/* Global CSS to handle autofill */
+input:-webkit-autofill {
+  background-color: #f5f5dc !important; /* bg-cream */
+  -webkit-text-fill-color: #000 !important; /* Text color */
+  box-shadow: 0 0 0px 1000px #f5f5dc inset !important; /* Ensures the background is applied properly */
+  border-radius: inherit; /* Ensure border-radius is consistent */
+}
+
+input:-webkit-autofill:focus {
+  background-color: #fefaf0 !important; /* Same bg-color when autofilled and focused */
+  -webkit-text-fill-color: #000 !important;
+  box-shadow: 0 0 0px 1000px #fefaf0 inset !important;
+}
+/* Scoped to your search bar input */
+.search-bar input:-webkit-autofill {
+  background-color: #fefaf0 !important; /* bg-cream */
+  -webkit-text-fill-color: #000 !important; /* Text color */
+  box-shadow: 0 0 0px 1000px #fefaf0 inset !important; /* Proper shadow */
+  border-radius: inherit; /* Match existing rounded corners */
+}
+
+.search-bar input:-webkit-autofill:focus {
+  background-color: #fefaf0 !important; /* bg-cream */
+  -webkit-text-fill-color: #000 !important;
+  box-shadow: 0 0 0px 1000px #fefaf0 inset !important;
+}
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #E68369;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

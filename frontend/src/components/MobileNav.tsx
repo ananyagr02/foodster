@@ -15,11 +15,12 @@ const MobileNav = () => {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0();
 
   return (
+    
     <Sheet>
       <SheetTrigger>
         <Menu className="text-orange-500" />
       </SheetTrigger>
-      <SheetContent className="space-y-3">
+      <SheetContent className=" bg-cream space-y-3">
         <SheetTitle>
           {isAuthenticated ? (
             <span className="flex items-center font-bold gap-2">
@@ -27,17 +28,17 @@ const MobileNav = () => {
               {user?.email}
             </span>
           ) : (
-            <span> Welcome to MernEats.com!</span>
+            <span> Welcome to Foodster</span>
           )}
         </SheetTitle>
         <Separator />
-        <SheetDescription className="flex flex-col gap-4">
+        <SheetDescription className="flex flex-col gap-4 ">
           {isAuthenticated ? (
             <MobileNavLinks />
           ) : (
             <Button
               onClick={() => loginWithRedirect()}
-              className="flex-1 font-bold bg-orange-500"
+              className="flex-1 font-bold  bg-orange text-white border border-transparent hover:bg-orange hover:scale-105 transition-transform"
             >
               Log In
             </Button>

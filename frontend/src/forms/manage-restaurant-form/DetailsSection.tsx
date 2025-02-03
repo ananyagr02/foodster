@@ -13,7 +13,7 @@ const DetailsSection = () => {
   const { control } = useFormContext();
   return (
     <div className="space-y-2">
-      <div>
+      <div >
         <h2 className="text-2xl font-bold">Details</h2>
         <FormDescription>
           Enter the details about your restaurant
@@ -26,7 +26,7 @@ const DetailsSection = () => {
           <FormItem>
             <FormLabel>Name</FormLabel>
             <FormControl>
-              <Input {...field} className="bg-white" />
+              <Input {...field} className="bg-cream border-green" />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -40,7 +40,7 @@ const DetailsSection = () => {
             <FormItem className="flex-1">
               <FormLabel>City</FormLabel>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input {...field} className="bg-cream border-green" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -53,7 +53,7 @@ const DetailsSection = () => {
             <FormItem className="flex-1">
               <FormLabel>Country</FormLabel>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input {...field} className="bg-cream border-green"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -66,9 +66,9 @@ const DetailsSection = () => {
         name="deliveryPrice"
         render={({ field }) => (
           <FormItem className="max-w-[25%]">
-            <FormLabel>Delivery price (£)</FormLabel>
+            <FormLabel>Delivery price (₹)</FormLabel>
             <FormControl>
-              <Input {...field} className="bg-white" placeholder="1.50" />
+              <Input {...field} className="bg-cream border-green" placeholder="1.50" />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -81,7 +81,7 @@ const DetailsSection = () => {
           <FormItem className="max-w-[25%]">
             <FormLabel>Estimated Delivery Time (minutes)</FormLabel>
             <FormControl>
-              <Input {...field} className="bg-white" placeholder="30" />
+              <Input {...field} className="bg-cream border-green" placeholder="30" />
             </FormControl>
             <FormMessage />
           </FormItem>

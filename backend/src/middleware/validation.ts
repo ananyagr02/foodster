@@ -45,5 +45,9 @@ export const validateMyRestaurantRequest = [
   body("menuItems.*.price")
     .isFloat({ min: 0 })
     .withMessage("Menu item price is required and must be a postive number"),
-  handleValidationErrors,
+    body("menuItems.*.mennuItemImageUrl")
+    .isString()
+    .notEmpty()
+    .withMessage("Menu item image URL is required and must be a valid string"),
+    handleValidationErrors,
 ];
