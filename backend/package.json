@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently \"nodemon\" \"npm run razorpay\"",
     "razorpay": "razorpay listen --forward-to localhost:7000/api/order/checkout/webhook",
-    "build": "npm install && npx tsc",
+        "postinstall": "cd ../frontend && npm install && npm run build",
+        "build": "npm install && npx tsc",
     "start": "node dist/index.js"
   },
   "keywords": [],
