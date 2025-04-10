@@ -74,8 +74,10 @@ cloudinary.config({
 const app = express();
 
 // CORS Configuration
-app.use(cors()
-//({
+
+app.use(cors({
+  origin: ["http://localhost:5173", "https://food-mern-23oh.onrender.com"], // allow both dev and deployed
+}));//({
 //   origin: [
 //     "https://food-ordering-platform.vercel.app", 
 //   ],
@@ -83,7 +85,7 @@ app.use(cors()
 //   allowedHeaders: ["Content-Type", "Authorization"],
 //   credentials: true
 // })
-);
+
 
 // Handle Webhook Requests
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
