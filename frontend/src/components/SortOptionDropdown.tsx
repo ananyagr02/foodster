@@ -35,7 +35,7 @@ const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer">
         <Button variant="outline" 
-            className="flex items-center px-4 py-2 text-sm w-full bg-orange text-white border border-transparent hover:bg-cream hover:border-green transition-colors">
+            className="flex items-center px-4 py-2 text-sm w-full bg-orange font-semibold text-white border border-transparent hover:bg-cream hover:border-green transition-colors">
             Sort by: {selectedSortLabel}
         </Button>
       </DropdownMenuTrigger>

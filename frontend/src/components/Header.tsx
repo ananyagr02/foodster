@@ -67,8 +67,11 @@ import MainNav from "./MainNav";
 
 const Header = () => {
   return (
-    <div className="shadow-md py-6 bg-green text-white">
-      <div className="container mx-auto flex items-center justify-between">
+    
+      <div className="w-full bg-green text-white shadow-md">
+
+<div className="max-w-screen-xl mx-auto flex items-center justify-between py-6 px-4">
+
         {/* Left Section: Home and About Links */}
         <div className="flex-1 flex items-center space-x-4">
           <Link

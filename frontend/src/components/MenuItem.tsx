@@ -1,27 +1,3 @@
-// import { MenuItems } from "../types";
-// import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-
-// type Props = {
-//   menuItem: MenuItems;
-//   addToCart: () => void;
-// };
-
-// const MenuItem = ({ menuItem, addToCart }: Props) => {
-//   return (
-//     <Card className="cursor-pointer" onClick={addToCart}>
-//       <CardHeader>
-//         <CardTitle>{menuItem.name}</CardTitle>
-//       </CardHeader>
-//       <CardContent className="font-bold">
-//         ₹{(menuItem.price / 100).toFixed(2)}
-//       </CardContent>
-//     </Card>
-//   );
-// };
-
-// export default MenuItem;
-
-
 import { MenuItems } from "../types";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
@@ -53,7 +29,7 @@ const MenuItem = ({ menuItem, addToCart }: Props) => {
             className="w-20 h-20 object-cover rounded-lg"
           />
         )}
-        <Button onClick={addToCart} className="mt-2">
+        <Button onClick={addToCart} className="mt-2 flex-1 bg-orange hover:bg-dullorange text-white font-bold ">
           Add to Cart
         </Button>
       </div>

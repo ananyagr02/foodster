@@ -12,7 +12,7 @@ const MainNav = () => {
         <>
           <Link to="/order-status" 
 className="font-bold text-lg px-3 py-1  text-white
-hover-underline-animation"            >            Order Status
+hover-underline-animation"  > Order Status
           </Link>
           <UsernameMenu />
         </>

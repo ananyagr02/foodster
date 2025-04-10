@@ -620,11 +620,10 @@ const SearchPage = () => {
         <div className="flex space-x-2">
           <button
             onClick={toggleVegetarian}
-            className={`px-4 py-2 text-sm rounded-full flex items-center ${
-              searchState.vegetarian
-                ? "bg-green-600 text-white"
-                : "bg-orange text-gray-800"
+            className={`px-4 py-2 text-sm rounded-lg flex items-center font-semibold ${
+              searchState.vegetarian ? "bg-cream border border-green text-black font-bold" : "bg-orange text-white"
             }`}
+            
           >
             Vegetarian
             {searchState.vegetarian && <X className="ml-2" size={16} />}
@@ -632,11 +631,10 @@ const SearchPage = () => {
 
           <button
             onClick={toggleNonVegetarian}
-            className={`px-4 py-2 text-sm rounded-full flex items-center ${
-              searchState.nonVegetarian
-                ? "bg-red-600 text-white"
-                : "bg-orange text-gray-800"
+            className={`px-4 py-2 text-sm rounded-lg flex items-center font-semibold ${
+              searchState.nonVegetarian ? "bg-cream border border-green text-black font-bold" : "bg-orange text-white"
             }`}
+            
           >
             Non-Vegetarian
             {searchState.nonVegetarian && <X className="ml-2" size={16} />}

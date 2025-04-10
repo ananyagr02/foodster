@@ -35,7 +35,7 @@ const CuisineFilter = ({ onChange, selectedCuisines }: Props) => {
         <Dialog.Trigger asChild>
           <Button
             variant="outline"
-            className="flex items-center px-4 py-2 text-sm w-full bg-orange text-white border border-transparent hover:bg-cream hover:border-green transition-colors"
+            className="flex items-center px-4 py-2 text-sm font-semibold w-full bg-orange text-white border border-transparent hover:bg-cream hover:border-green transition-colors"
             >
             <Filter className="mr-2" size={18} />
             Filter By Cuisine

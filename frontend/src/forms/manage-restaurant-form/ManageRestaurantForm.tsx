@@ -209,7 +209,14 @@ const formSchema = z
           name: z.string().min(1, "name is required"),
           price: z.coerce.number().min(1, "price is required"),
           menuItemImageUrl: z.string().optional(), // Optional menu item image URL
-          menuItemImageFile: z.instanceof(File).optional(), // Menu item image file        })
+          menuItemImageFile: z
+  .custom<File | null | undefined>((val) => {
+    return val === undefined || val === null || val instanceof File;
+  }, {
+    message: "Upload Image, Input not an instance of File"
+  })
+  .optional(),
+ // Menu item image file        })
         
   }),
 ),
@@ -319,7 +326,9 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
         <MenuSection />
         <Separator />
         <ImageSection />
-        {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
+        {isLoading ? <LoadingButton /> : <Button type="submit"
+          className="mt-2 bg-red-400 text-white hover:bg-red-400 transition-transform transform hover:scale-105"
+>Submit</Button>}
       </form>
     </Form>
   );

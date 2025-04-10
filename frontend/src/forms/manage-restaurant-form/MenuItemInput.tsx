@@ -353,7 +353,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
           <Button
             type="button"
             onClick={handleRemoveImage}
-            className="mt-2 bg-red-500 text-white hover:bg-red-600"
+            className="mt-2 bg-red-400 text-white hover:bg-red-600"
           >
             Remove Image
           </Button>
@@ -364,7 +364,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
       <Button
         type="button"
         onClick={removeMenuItem}
-        className="bg-red-500 text-white hover:bg-red-600"
+        className="bg-red-400 text-white hover:bg-red-600"
         aria-label={`Remove menu item ${index + 1}`}
       >
         Remove Menu Item
