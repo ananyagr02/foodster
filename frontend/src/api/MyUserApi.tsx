@@ -1,15 +1,23 @@
 import { User } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useGetMyUser = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const {
+    getAccessTokenSilently,
+    isAuthenticated,
+    isLoading: authLoading,
+  } = useAuth0();
 
   const getMyUserRequest = async (): Promise<User> => {
-    const accessToken = await getAccessTokenSilently();
+    const accessToken = await getAccessTokenSilently({
+      authorizationParams: {
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+      },
+    });
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "GET",
@@ -29,14 +37,22 @@ export const useGetMyUser = () => {
   const {
     data: currentUser,
     isLoading,
+    isError,
     error,
-  } = useQuery("fetchCurrentUser", getMyUserRequest);
+  } = useQuery("fetchCurrentUser", getMyUserRequest, {
+    enabled: isAuthenticated && !authLoading,
+    retry: false,
+    onError: (err: any) => {
+      toast.error("Error fetching user: " + err.message);
+    },
+  });
 
-  if (error) {
-    toast.error(error.toString());
-  }
-
-  return { currentUser, isLoading };
+  return {
+    currentUser,
+    isLoading: isLoading || authLoading,
+    isError,
+    error,
+  };
 };
 
 type CreateUserRequest = {
@@ -48,7 +64,12 @@ export const useCreateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
   const createMyUserRequest = async (user: CreateUserRequest) => {
-    const accessToken = await getAccessTokenSilently();
+    const accessToken = await getAccessTokenSilently({
+      authorizationParams: {
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+      },
+    });
+
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "POST",
       headers: {
@@ -68,7 +89,12 @@ export const useCreateMyUser = () => {
     isLoading,
     isError,
     isSuccess,
-  } = useMutation(createMyUserRequest);
+  } = useMutation(createMyUserRequest, {
+    retry: false,
+    onError: (err: any) => {
+      toast.error("Error creating user: " + err.message);
+    },
+  });
 
   return {
     createUser,
@@ -87,9 +113,16 @@ type UpdateMyUserRequest = {
 
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
+  const queryClient = useQueryClient();
 
-  const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
-    const accessToken = await getAccessTokenSilently();
+  const updateMyUserRequest = async (
+    formData: UpdateMyUserRequest
+  ): Promise<User> => {
+    const accessToken = await getAccessTokenSilently({
+      authorizationParams: {
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+      },
+    });
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
@@ -111,18 +144,20 @@ export const useUpdateMyUser = () => {
     mutateAsync: updateUser,
     isLoading,
     isSuccess,
-    error,
-    reset,
-  } = useMutation(updateMyUserRequest);
+  } = useMutation(updateMyUserRequest, {
+    retry: false,
+    onSuccess: () => {
+      queryClient.invalidateQueries("fetchCurrentUser");
+      toast.success("User profile updated!");
+    },
+    onError: (err: any) => {
+      toast.error("Error updating user: " + err.message);
+    },
+  });
 
-  if (isSuccess) {
-    toast.success("User profile updated!");
-  }
-
-  if (error) {
-    toast.error(error.toString());
-    reset();
-  }
-
-  return { updateUser, isLoading };
+  return {
+    updateUser,
+    isLoading,
+    isSuccess,
+  };
 };
