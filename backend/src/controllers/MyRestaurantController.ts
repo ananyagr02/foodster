@@ -622,14 +622,29 @@ const createMyRestaurant = async (req: Request, res: Response) => {
       );
 
 
+    // const restaurant = new Restaurant({
+    //   ...req.body,
+    //   restaurantImageUrl,
+    //   menuItems,
+    //   user: new mongoose.Types.ObjectId(req.userId),
+    //   lastUpdated: new Date(),
+    // });
     const restaurant = new Restaurant({
-      ...req.body,
+      restaurantName: req.body.restaurantName,
+      city: req.body.city,
+      country: req.body.country,
+      deliveryPrice: Number(req.body.deliveryPrice),
+      estimatedDeliveryTime: Number(req.body.estimatedDeliveryTime),
+      cuisines: req.body.cuisines,
       restaurantImageUrl,
-      menuItems,
+      menuItems: menuItems.map((item: any) => ({
+        ...item,
+        price: Number(item.price), // ✅ Very important
+      })),
       user: new mongoose.Types.ObjectId(req.userId),
       lastUpdated: new Date(),
     });
-
+    
     await restaurant.save();
     res.status(201).send(restaurant);
   } catch (error) {
@@ -652,8 +667,8 @@ const updateMyRestaurant = async (req: Request, res: Response) => {
     restaurant.restaurantName = req.body.restaurantName;
     restaurant.city = req.body.city;
     restaurant.country = req.body.country;
-    restaurant.deliveryPrice = req.body.deliveryPrice;
-    restaurant.estimatedDeliveryTime = req.body.estimatedDeliveryTime;
+    restaurant.deliveryPrice = Number(req.body.deliveryPrice);
+    restaurant.estimatedDeliveryTime = Number(req.body.estimatedDeliveryTime);
     restaurant.cuisines = req.body.cuisines;
     restaurant.lastUpdated = new Date();
 
@@ -673,6 +688,7 @@ const updateMyRestaurant = async (req: Request, res: Response) => {
           if (menuItemImage) {
             item.menuItemImageUrl = await uploadImage(menuItemImage);
           }
+          item.price = Number(item.price); 
           return item;
         })
       );

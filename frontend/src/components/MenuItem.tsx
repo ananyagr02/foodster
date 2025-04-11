@@ -16,7 +16,7 @@ const MenuItem = ({ menuItem, addToCart }: Props) => {
           <CardTitle className="text-lg font-bold">{menuItem.name}</CardTitle>
         </CardHeader>
         <CardContent className="text-gray-600">
-          ₹{(menuItem.price / 100).toFixed(2)}
+          ₹{(menuItem.price).toFixed(2)}
         </CardContent>
       </div>
 

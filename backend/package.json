@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",
+  
   "scripts": {
-    "dev": "concurrently \"nodemon\" \"npm run razorpay\"",
-    "razorpay": "razorpay listen --forward-to localhost:7000/api/order/checkout/webhook",
-        "postinstall": "cd ../frontend && npm install && npm run build",
-        "build": "npm install && npx tsc",
-    "start": "node dist/index.js"
-  },
+  "dev": "nodemon",
+  "postinstall": "cd ../frontend && npm install && npm run build",
+  "build": "npm install && npx tsc",
+  "start": "node dist/index.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,7 +27,7 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
     "multer": "^1.4.5-lts.1",
-    "razorpay": "^2.9.5",
+    "razorpay": "^2.9.6",
     "razorpayx": "^1.0.3",
     "stripe": "^14.15.0"
   },

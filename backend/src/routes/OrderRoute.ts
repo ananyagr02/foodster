@@ -4,15 +4,18 @@ import OrderController from "../controllers/OrderController";
 
 const router = express.Router();
 
+//  Fetch logged-in user's orders
 router.get("/", jwtCheck, jwtParse, OrderController.getMyOrders);
 
-router.post(
-  "/checkout/create-checkout-session",
-  jwtCheck,
-  jwtParse,
-  OrderController.createCheckoutSession
-);
+// //  Create a Razorpay checkout session
+// router.post(
+//   "/checkout/create-checkout-session",
+//   jwtCheck,
+//   jwtParse,
+//   OrderController.createCheckoutSession
+// );
 
+//  Razorpay webhook endpoint (no auth, must remain raw)
 router.post("/checkout/webhook", OrderController.razorpayWebhookHandler);
 
 export default router;

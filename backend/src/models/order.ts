@@ -14,9 +14,12 @@ const orderSchema = new mongoose.Schema({
       menuItemId: { type: String, required: true },
       quantity: { type: Number, required: true },
       name: { type: String, required: true },
+      price: { type: Number, required: true },
+
     },
   ],
-  totalAmount: Number,
+  totalAmount: { type: Number, required: true },
+
   status: {
     type: String,
     enum: ["placed", "paid", "inProgress", "outForDelivery", "delivered"],
