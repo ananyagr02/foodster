@@ -23,14 +23,15 @@ const RestaurantInfo = ({ restaurant }: Props) => {
           {restaurant.city}, {restaurant.country}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex">
-        {restaurant.cuisines.map((item, index) => (
-          <span className="flex">
-            <span>{item}</span>
-            {index < restaurant.cuisines.length - 1 && <Dot />}
-          </span>
-        ))}
-      </CardContent>
+      <CardContent className="flex flex-wrap gap-2">
+  {restaurant.cuisines.map((item, index) => (
+    <span key={index} className="flex items-center text-sm text-muted-foreground">
+      <span>{item}</span>
+      {index < restaurant.cuisines.length - 1 && <Dot className="w-4 h-4 mx-1" />}
+    </span>
+  ))}
+</CardContent>
+
     </Card>
   );
 };

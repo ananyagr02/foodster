@@ -19,7 +19,7 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
     );
 
     const totalWithDelivery = itemsTotal + restaurant.deliveryPrice;
-    console.log("💰 Total amount from frontend (₹) WITH DELIVERY ===😂😂😂:", totalWithDelivery);
+    console.log("💰 Total amount from frontend (₹) WITH DELIVERY:", totalWithDelivery);
 
     return (totalWithDelivery).toFixed(2);
   };
