@@ -8,7 +8,7 @@
 ## 🛍️ User Experience
 
 - 🔍 **Browse Restaurants**  
-  View detailed restaurant profiles from each selected city.
+  View detailed restaurant profiles from each selected city with restaurant images stored securely and served from **Cloudinary** for faster loading and optimized performance.
 
 - 🧭 **Advanced Restaurant Discovery**  
   - Filter by **cuisines**  
