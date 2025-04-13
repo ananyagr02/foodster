@@ -1,23 +1,42 @@
 # 🍔 Foodster – Food Ordering Platform
 
-**Foodster** is a sleek, full-stack web application for discovering restaurants, browsing menus, customizing orders, and securely checking out with Razorpay. It combines a smooth user experience with modern development best practices and real-time features.
+**Foodster** is a sleek, full-stack web application for discovering restaurants in Indian cities, browsing menus, customizing orders, and securely checking out with Razorpay. It combines a smooth user experience with modern development best practices and real-time features.
 
 ---
 
 ## 🚀 Features
+## 🛍️ User Experience
 
-### 🛍️ User Experience
-- 🔍 **Browse Restaurants** – View detailed restaurant profiles and featured dishes.
-- 📋 **Dynamic Menus** – Browse categorized menu items.
-- 🛒 **Smart Cart Management** – Add/remove items with quantity controls, saved in session storage.
-- 👤 **Auth0 Authentication** – Secure login/signup using Auth0.
-- 📦 **Order Summary** – Real-time summary of cart items, total price, and delivery details.
-- 🧾 **User Profile Integration** – Auto-fill delivery form using saved profile data.
-- 💳 **Razorpay Payment Gateway** – Seamless payment integration with live checkout.
-- 📬 **Order Confirmation Page** – Redirects to order status  page post-payment.
-- 🔄 **Live Order Fetching** – Orders auto-refresh using `react-query`'s `refetchInterval`.
+- 🔍 **Browse Restaurants**  
+  View detailed restaurant profiles from each selected city.
 
----
+- 🧭 **Advanced Restaurant Discovery**  
+  - Filter by **cuisines**  
+  - Sort by **Delivery price**, **Best match**, or **Delivery time**  
+  - Toggle **vegetarian** / **non-vegetarian** options  
+  - **Search** restaurants by name or cuisine
+
+- 📋 **Dynamic Menus**  
+  Explore menu items with ease for every restaurant.
+
+- 🛒 **Smart Cart Management**  
+  Add or remove items with quantity controls, with state saved in **session storage** for persistent cart experience.
+
+- 👤 **Auth0 Authentication**  
+  Secure login/signup system powered by Auth0, with **Google sign-in** support.
+
+- 📦 **Order Summary**  
+  Get a real-time summary of all cart items, pricing, and delivery info before checkout.
+
+- 🧾 **User Profile Integration**  
+  Automatically fill delivery forms using saved user profile data.
+
+- 💳 **Razorpay Payment Gateway**  
+  Smooth and secure payments using **Razorpay**, integrated with live checkout experience.
+
+- 🔄 **Live Order Fetching**  
+  Instantly redirected to order status page with updates in real time using `react-query`’s `refetchInterval`.
+
 
 ## ⚙️ Tech Stack
 
@@ -37,33 +56,61 @@
 - **CORS** – Security best practices.
 
 ---
+## 🛠️ Setup Instructions
 
-## 📦 API Endpoints
+### 1. Clone the Repository
 
-### 🔐 Auth APIs
-| Method | Endpoint        | Description              |
-|--------|------------------|--------------------------|
-| GET    | `/api/my/user`   | Fetch current user info  |
-| PUT    | `/api/my/user`   | Update user profile      |
+```bash
+git clone https://github.com/ananyagr02/foodster.git
+cd foodster
+```
 
-### 🍽️ Restaurant APIs
-| Method | Endpoint                  | Description                  |
-|--------|----------------------------|------------------------------|
-| GET    | `/api/restaurant/:id`     | Fetch a restaurant by ID     |
-| GET    | `/api/restaurant`         | List all available restaurants |
+### 2. Set Up Backend
 
-### 🛒 Order APIs
-| Method | Endpoint                                      | Description                                 |
-|--------|-----------------------------------------------|---------------------------------------------|
-| GET    | `/api/order`                                  | Get all orders for the logged-in user       |
-| POST   | `/api/order/checkout/create-checkout-session` | Create Razorpay order and initiate checkout |
+```bash
+cd backend
+npm install
+npm run dev
+```
 
----
+### 3. Set Up Frontend
 
-## 📄 Environment Variables
+```bash
+cd ../frontend
+npm install
+npm run dev
+```
 
-Create a `.env` file at the root of your project and set:
+## 🔐 Environment Variables
 
+Make sure to create a `.env` file in both `frontend/` and `backend/` directories with the following variables:
+
+### 📦 Backend `.env`
 ```env
-VITE_API_BASE_URL=http://localhost:5000
-VITE_RAZORPAY_KEY_ID=your_razorpay_key
+PORT=7000
+MONGODB_CONNECTION_STRING=your_mongodb_connection_string
+AUTH0_DOMAIN=your_auth0_domain
+AUTH0_AUDIENCE=your_auth0_audience
+AUTH0_ISSUER_BASE_URL=your_auth0_baseURL
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+FRONTEND_URL=http://localhost:5173/
+JWT_SECRET=your_jwt_secret
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+```
+
+### 💻 Frontend `.env`
+```env
+VITE_API_BASE_URL=http://localhost:7000
+VITE_AUTH0_AUDIENCE=your_auth0_audience
+VITE_AUTH0_CALLBACK_URL=http://localhost:5173/
+VITE_AUTH0_CLIENT_ID=your_auth0_client_id
+VITE_AUTH0_DOMAIN=your_auth0_domain
+VITE_RAZORPAY_KEY_ID=your_razorpay_key_id
+VITE_RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+```
+
+> ⚠️ Make sure `VITE_AUTH0_CALLBACK_URL` matches what you've set in the Auth0 dashboard. If deploying to production, update it accordingly.
+
