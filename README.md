@@ -7,6 +7,9 @@
 ## 🚀 Features
 ## 🛍️ User Experience
 
+- 👤 **Auth0 Authentication**  
+  Secure login/signup system powered by Auth0, with **Google sign-in** support.
+  
 - 🔍 **Browse Restaurants**  
   View detailed restaurant profiles from each selected city with restaurant images stored securely and served from **Cloudinary** for faster loading and optimized performance.
 
@@ -21,9 +24,6 @@
 
 - 🛒 **Smart Cart Management**  
   Add or remove items with quantity controls, with state saved in **session storage** for persistent cart experience.
-
-- 👤 **Auth0 Authentication**  
-  Secure login/signup system powered by Auth0, with **Google sign-in** support.
 
 - 📦 **Order Summary**  
   Get a real-time summary of all cart items, pricing, and delivery info before checkout.
