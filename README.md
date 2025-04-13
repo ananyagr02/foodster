@@ -40,7 +40,7 @@
 
 ## ⚙️ Tech Stack
 
-### 🧠 Frontend
+### 🖼️ Frontend
 - **React + Vite** – Lightning-fast, modular frontend.
 - **Tailwind CSS** – Utility-first, responsive styling.
 - **TypeScript** – Strong typing and scalable codebase.
@@ -48,7 +48,7 @@
 - **Auth0** – Secure authentication system.
 - **Razorpay Web SDK** – Embedded payment experience.
 
-### 🧰 Backend (Node.js/Express)
+### 🖥️ Backend (Node.js/Express)
 - **Express.js** – REST API server.
 - **MongoDB** – NoSQL database with Mongoose ODM.
 - **JWT Middleware** – Token-based auth with route protection.
