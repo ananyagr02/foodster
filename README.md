@@ -76,7 +76,7 @@ npm run dev
 ### 3. Set Up Frontend
 
 ```bash
-cd ../frontend
+cd frontend
 npm install
 npm run dev
 ```
